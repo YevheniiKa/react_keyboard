@@ -5,7 +5,7 @@ type State = {
 };
 export class App extends React.Component<State> {
   state: State = {
-    pressedKey: '',
+    pressedKey: null,
   };
 
   handleKeyUp = (event: KeyboardEvent) => {
@@ -21,12 +21,12 @@ export class App extends React.Component<State> {
   }
 
   render() {
-    return this.state.pressedKey ? (
+    return !this.state.pressedKey ? (
+      <p className="App__message">Nothing was pressed yet</p>
+    ) : (
       <p className="App__message">
         The last pressed key is [{this.state.pressedKey}]
       </p>
-    ) : (
-      <p className="App__message">Nothing was pressed yet</p>
     );
   }
 }
